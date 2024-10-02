@@ -1,4 +1,4 @@
-<h1> Projeto do site "Ainda sem Nome"</h1>
+<h1> Projeto EcoWarriors"</h1>
 
 ### > Membros
 
@@ -13,7 +13,12 @@
 
 ### > Apresentação de projeto
 
-Escrever
+   Em um contexto de desinformação populacional a respeito de animais em extinção, as consequências causadas por desequilíbrios naturais tornam-se mais graves. Com isso, propõe-se o desenvolvimento do site ''ecoWarriors” para a politização e envolvimento do cidadão com esses problemas negligenciados. 
+
+   O "EcoWarriors'' atuará como divulgador das espécies em risco, com a intenção de gerar visibilidade por meio da interação tecnológica. Através de minigames e informativos, ele estabelece o fortalecimento da participação cidadã na luta contra a extinção.
+
+   O site fará uso de minigames com a finalidade de promover a integração ao conteúdo, visando, assim, tornar o processo de aprendizado tanto empolgante quanto desafiador. Serão implementados jogos como “Adivinhe o animal”, “Adivinhe o habitat”, “Forca”, e “Termo”, que incentivam o usuário a interagir de forma divertida e informativa com as espécies ameaçadas, aprendendo sobre suas características e habitats. Ademais, almeja-se incentivar uma reflexão em torno da participação de cada sujeito no contexto da degradação ambiental que se observa.
+
 
 ### > Escopo do Projeto
  
