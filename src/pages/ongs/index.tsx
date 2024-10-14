@@ -2,4 +2,4 @@ const OngsPage = () => {
   return <div>Ongs page</div>;
 };
 
-export { OngsPage };
+export default OngsPage;
