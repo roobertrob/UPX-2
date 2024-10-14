@@ -1,5 +1,5 @@
 const EspeciesPage = () => {
-  return <div>Especies page</div>;
+  return <div className="w-ful text-3xl">Especies page</div>;
 };
 
-export { EspeciesPage };
+export default EspeciesPage;

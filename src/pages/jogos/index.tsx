@@ -2,4 +2,4 @@ const JogosPage = () => {
   return <div>Jogos page</div>;
 };
 
-export { JogosPage };
+export default JogosPage;

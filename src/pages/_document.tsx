@@ -11,10 +11,12 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body className="antialiased">
-        <PageHeader />
-        <Main />
+      <body>
         <NextScript />
+        <PageHeader />
+        <div className="pt-24">
+          <Main />
+        </div>
       </body>
     </Html>
   );
