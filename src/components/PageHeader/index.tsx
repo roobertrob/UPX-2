@@ -9,7 +9,6 @@ const PageHeader = () => {
         height={150}
         src="/logo.svg"
         alt="eco warrios logotipo"
-        className="mr-"
       />
       <div className="ml-6 p-4 space-x-6 text-2xl">
         <Link href="/especies">Espécies</Link>
