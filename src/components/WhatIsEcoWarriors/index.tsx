@@ -2,12 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 const WhatIsEcoWarriors = () => {
   return (
-    <div className="w-2/3 bg-primary-solid h-content rounded-r-customRadius flex flex-row text-white p-16 my-12">
+    <div className=" w-full lg:w-2/3 bg-primary-solid h-content rounded-r-customRadius flex flex-row text-white p-16 my-12">
       <Image
         width={300}
         height={150}
         src="/logo-vertical.svg"
         alt="eco warrios logotipo"
+        className="invisible w-0 lg:w-1/3 lg:visible"
       />
       <div className="w-full px-10">
         <h3 className="text-3xl">O QUE É O ECOWARRIORS?</h3>
