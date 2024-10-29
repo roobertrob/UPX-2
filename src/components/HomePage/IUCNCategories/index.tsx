@@ -61,7 +61,7 @@ const IUCNCategories = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-3 max-w-7xl">
       {iucnCategories.map((category) => (
         <ICNUCard
-          key={category.acronym}
+          key={category.acronym + category.description}
           title={category.title}
           acronym={category.acronym}
           description={category.description}

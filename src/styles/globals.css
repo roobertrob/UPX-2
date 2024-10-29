@@ -19,3 +19,7 @@ body {
     text-wrap: balance;
   }
 }
+
+*:hover {
+  transition: all 0.25s ease-in-out;
+}
