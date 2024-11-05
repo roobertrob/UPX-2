@@ -163,6 +163,32 @@ const EspeciePage = ({ animal, randomImagePath }) => {
               <p className="mt-5 text-xl">{additionalInfo}</p>
             </div>
           </div>
+          <div className="mt-8 space-y-2 flex flex-wrap gap-8 items-center justify-center">
+            <div className="flex flex-col items-center justify-center w-56 text-wrap text-center gap-3">
+              <Image src="/diurno.svg" width={60} height={50} alt="" />
+              {lifestyle}
+            </div>
+            <div className="flex flex-col items-center justify-center  w-56 text-wrap text-center gap-3">
+              <Image src="/localizacao.png" width={60} height={50} alt="" />
+              {location}
+            </div>
+            <div className="flex flex-col items-center justify-center  w-56 text-wrap text-center gap-3">
+              <Image src="/alimentacao.svg" width={60} height={50} alt="" />
+              {diet}
+            </div>
+            <div className="flex flex-col items-center justify-center  w-56 text-wrap text-center gap-3">
+              <Image src="/forma-de-viver.svg" width={60} height={50} alt="" />
+              {groupBehavior}
+            </div>
+            <div className="flex flex-col items-center justify-center  w-56 text-wrap text-center gap-3">
+              <Image src="/habitat.svg" width={60} height={50} alt="" />
+              {habitat}
+            </div>
+            <div className="flex flex-col items-center justify-center  w-56 text-wrap text-center gap-3">
+              <Image src="/comida.svg" width={60} height={50} alt="" />
+              {dietContents}
+            </div>
+          </div>
           <div className="mt-8">
             <h2 className="text-2xl font-semibold text-primary-solid">
               Características Marcantes
@@ -175,27 +201,6 @@ const EspeciePage = ({ animal, randomImagePath }) => {
               Principais Ameaças
             </h2>
             <p className="mt-4">{mainThreat}</p>
-          </div>
-
-          <div className="mt-8 space-y-2">
-            <h2 className="text-2xl font-semibold text-primary-solid">
-              Mais Informações
-            </h2>
-            <p>
-              <strong>Dieta:</strong> {diet} - {dietContents}
-            </p>
-            <p>
-              <strong>Localização:</strong> {location}
-            </p>
-            <p>
-              <strong>Comportamento de Grupo:</strong> {groupBehavior}
-            </p>
-            <p>
-              <strong>Habitat:</strong> {habitat}
-            </p>
-            <p>
-              <strong>Estilo de Vida:</strong> {lifestyle}
-            </p>
           </div>
 
           <div className="mt-8">
