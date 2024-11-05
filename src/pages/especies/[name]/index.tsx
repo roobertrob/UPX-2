@@ -1,16 +1,50 @@
+import fs from 'fs';
+import path from 'path';
+
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 
 import animals from '@/data/animals.json';
 
-const EspeciePage = () => {
-  const router = useRouter();
-  const { name } = router.query as any;
+export async function getStaticPaths() {
+  const paths = animals.map((animal) => ({
+    params: { name: animal.name.toLowerCase() },
+  }));
 
-  const animal = animals.find(
-    (a) => a.name.toLowerCase() === name?.toLowerCase() ,
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const animal = animals.find((a) => a.name.toLowerCase() === params.name);
+
+  if (!animal) {
+    return { notFound: true };
+  }
+
+  const directoryPath = path.join(
+    process.cwd(),
+    'public',
+    'animals-pictures',
+    animal.name,
   );
 
+  let randomImagePath = '/default-image.jpg';
+  try {
+    const files = fs.readdirSync(directoryPath);
+    const randomFile = files[Math.floor(Math.random() * files.length)];
+    randomImagePath = `/animals-pictures/${animal.name}/${randomFile}`;
+  } catch (error) {
+    console.error('Erro ao obter a imagem:', error);
+  }
+
+  return {
+    props: {
+      animal,
+      randomImagePath,
+    },
+  };
+}
+
+const EspeciePage = ({ animal, randomImagePath }) => {
   if (!animal) {
     return <p>Espécie não encontrada</p>;
   }
@@ -20,7 +54,6 @@ const EspeciePage = () => {
     extinctionRisk,
     nickname,
     conservationProject,
-    photos,
     phylum,
     class: animalClass,
     additionalInfo,
@@ -47,17 +80,15 @@ const EspeciePage = () => {
   return (
     <div className="p-8 max-w-8xl mx-auto rounded-lg">
       <div className="flex flex-col lg:flex-row mt-8 space-y-8 lg:space-y-0 lg:space-x-8">
-        <div className="w-full lg:w-2/5 flex flex-col  bg-gray-200 p-4 rounded-lg">
+        <div className="w-full lg:w-2/5 flex flex-col bg-gray-200 p-4 rounded-lg">
           <div className="w-full mb-6">
-            {photos?.[0] && (
-              <Image
-                src={photos[0]}
-                alt={name}
-                width={192}
-                height={192}
-                className="object-cover rounded-lg"
-              />
-            )}
+            <Image
+              src={randomImagePath}
+              alt={animal.name}
+              width={550}
+              height={192}
+              className="object-cover rounded-lg"
+            />
             <h1 className="text-2xl font-bold my-4 text-center text-primary-solid uppercase">
               {scientificName}
             </h1>
@@ -126,7 +157,7 @@ const EspeciePage = () => {
           <div className="flex flex-col md:flex-row items-start rounded-lg space-y-3 md:space-x-6 md:space-y-0 w-full">
             <div className="w-full">
               <p className="text-primary-solid text-2xl uppercase font-bold">
-                {name}
+                {animal.name}
               </p>
               <p className="text-primary-solid text-lg font-bold">{nickname}</p>
               <p className="mt-5 text-xl">{additionalInfo}</p>

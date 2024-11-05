@@ -1,14 +1,47 @@
+import fs from 'fs';
+import path from 'path';
+
 import { useState } from 'react';
 
 import { AnimalCard } from '@/components/AnimalCard';
 import animalsData from '@/data/animals.json';
 
-const EspeciesPage = () => {
+const getRandomImagePath = (animalName) => {
+  try {
+    const directoryPath = path.join(
+      process.cwd(),
+      'public',
+      'animals-pictures',
+      animalName,
+    );
+    const files = fs.readdirSync(directoryPath);
+
+    const randomFile = files[Math.floor(Math.random() * files.length)];
+    return `/animals-pictures/${animalName}/${randomFile}`;
+  } catch (error) {
+    console.error('Erro ao obter a imagem:', error);
+    return '/default-image.jpg';
+  }
+};
+
+export async function getStaticProps() {
+  const animalsWithImages = animalsData.map((animal) => ({
+    ...animal,
+    randomImagePath: getRandomImagePath(animal.name),
+  }));
+
+  return {
+    props: {
+      animals: animalsWithImages,
+    },
+  };
+}
+
+const EspeciesPage = ({ animals }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
-  const randomIndex = Math.floor(Math.random() * 5);
 
-  const filteredAnimals = animalsData.filter((animal) => {
+  const filteredAnimals = animals?.filter((animal) => {
     const matchesCategory = selectedCategory
       ? animal.class.toLowerCase() === selectedCategory.toLowerCase()
       : true;
@@ -19,7 +52,7 @@ const EspeciesPage = () => {
   });
 
   const categories = Array.from(
-    new Set(animalsData.map((animal) => animal.class)),
+    new Set(animals?.map((animal) => animal.class)),
   ).sort();
 
   return (
@@ -32,8 +65,8 @@ const EspeciesPage = () => {
         >
           <option value="">Todas as categorias</option>
           {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
+            <option key={category as any} value={category as any}>
+              {category as any}
             </option>
           ))}
         </select>
@@ -52,8 +85,8 @@ const EspeciesPage = () => {
             <AnimalCard
               key={animal.name}
               title={animal.name}
-              imagePath={animal?.photos?.[randomIndex]}
-              risk={animal.extinctionRisk as any}
+              imagePath={animal.randomImagePath}
+              risk={animal.extinctionRisk}
             />
           ))
         ) : (
