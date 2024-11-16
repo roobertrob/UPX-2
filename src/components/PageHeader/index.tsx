@@ -4,12 +4,14 @@ import Link from 'next/link';
 const PageHeader = () => {
   return (
     <nav className="w-full p-4 bg-primary-solid flex fixed text-white">
-      <Image
-        width={300}
-        height={150}
-        src="/logo.svg"
-        alt="eco warrios logotipo"
-      />
+      <Link href='/'>
+        <Image
+          width={300}
+          height={150}
+          src="/logo.svg"
+          alt="eco warrios logotipo"
+        />
+      </Link>
       <div className="ml-6 p-4 space-x-6 text-2xl">
         <Link href="/especies">Espécies</Link>
         <Link href="/jogos">Jogos</Link>

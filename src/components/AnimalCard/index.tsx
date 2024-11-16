@@ -33,7 +33,7 @@ const AnimalCard = ({
           className="object-cover rounded-lg"
         />
       )}
-      <div className="w-full h-48 overflow-hidden rounded-lg m-4">
+      <div className="h-48 overflow-hidden rounded-lg m-4">
         <Image
           src={imagePath}
           width={300}
@@ -45,8 +45,8 @@ const AnimalCard = ({
       <h3 className="text-3xl font-extrabold my-2">{title}</h3>
       <p className="mt-4">{description}</p>
       <Link
-        href={`especies/${title.toLowerCase()}`}
-        className="bg-primary-solid py-3 px-6 rounded-2xl place-self-center text-white mt-auto"
+        href={`especies/`}
+        className="bg-primary-solid py-3 px-6 rounded-2xl place-self-center text-white mt-5"
       >
         Saiba mais
       </Link>

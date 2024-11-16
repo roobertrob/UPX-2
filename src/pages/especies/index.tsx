@@ -97,6 +97,6 @@ const EspeciesPage = ({ animals }) => {
       </div>
     </div>
   );
-};
+}
 
 export default EspeciesPage;
